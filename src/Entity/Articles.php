@@ -1,6 +1,6 @@
 <?php
 
-namespace App\\Entity;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -51,6 +51,59 @@ class Articles
      * })
      */
     private $usersusers;
+
+    public function getIdarticles(): ?int
+    {
+        return $this->idarticles;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    public function getTemps(): ?\DateTimeInterface
+    {
+        return $this->temps;
+    }
+
+    public function setTemps(?\DateTimeInterface $temps): self
+    {
+        $this->temps = $temps;
+
+        return $this;
+    }
+
+    public function getUsersusers(): ?Users
+    {
+        return $this->usersusers;
+    }
+
+    public function setUsersusers(?Users $usersusers): self
+    {
+        $this->usersusers = $usersusers;
+
+        return $this;
+    }
 
 
 }
