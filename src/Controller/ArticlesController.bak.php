@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,6 +12,7 @@ class ArticlesController extends AbstractController
     /**
      * @Route("/", name="articles")
      */
+/*
     public function index()
     {
         
@@ -21,3 +22,4 @@ class ArticlesController extends AbstractController
         return new Response('Check out this great product: '.$util->getLogin());
     }
 }
+*/
