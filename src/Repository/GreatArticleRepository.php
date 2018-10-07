@@ -19,14 +19,14 @@ class GreatArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, GreatArticle::class);
     }
 
-//    /**
-//     * @return GreatArticle[] Returns an array of GreatArticle objects
-//     */
-    /*
+/**
+* @return GreatArticle[] Returns an array of GreatArticle objects
+*/
+    
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('g')
-            ->andWhere('g.exampleField = :val')
+            ->andWhere('g.id = :val')
             ->setParameter('val', $value)
             ->orderBy('g.id', 'ASC')
             ->setMaxResults(10)
@@ -34,9 +34,7 @@ class GreatArticleRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
-
-    /*
+    
     public function findOneBySomeField($value): ?GreatArticle
     {
         return $this->createQueryBuilder('g')
@@ -46,5 +44,5 @@ class GreatArticleRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+    
 }
