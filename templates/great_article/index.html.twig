@@ -19,4 +19,15 @@
         <li>Your repository at <code><a href="{{ 'src/Repository/GreatArticleRepository.php'|file_link(0) }}">src/Repository/GreatArticleRepository.php</a></code></li>
     </ul>
 </div>
+    <nav>
+        <ul>
+            <li>Accueil</li>
+            <li>Accueil</li>
+        </ul>
+    </nav>
+        {% for item in affiche %}
+            <h2>{{item.getTitre}}</h2>
+            <p>{{item.getTexte|slice(0, 100)}} <a href="{{ path("voir",{"id":item.getId})}}">... Lire la suite</a></p>
+            <p>{{item.getThedate|date('d-m-Y')}}</p><hr>
+        {% endfor %}
 {% endblock %}

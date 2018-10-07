@@ -6,17 +6,26 @@ use App\Entity\GreatArticle;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class GreatArticleController extends AbstractController
-{
+class GreatArticleController extends AbstractController {
+
     /**
-     * @Route("/great/article", name="great_article")
+     * @Route("/", name="Accueil")
      */
-    public function index()
-    {
+    public function index() {
         $repository = $this->getDoctrine()->getRepository(GreatArticle::class);
-        $repository->findByExampleField(1);
+        $articles = $repository->findAll();
         return $this->render('great_article/index.html.twig', [
-            'controller_name' => 'GreatArticleController',
+                    'controller_name' => 'GreatArticleController',
+                    'affiche' => $articles,
         ]);
     }
+
+    /**
+     * @Route("/article/{id}", name="voir")
+     */
+    public function show(GreatArticle $product) {
+        // use the Product!
+        // ...
+    }
+
 }

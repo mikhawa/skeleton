@@ -23,6 +23,7 @@ class GreatArticleRepository extends ServiceEntityRepository
 * @return GreatArticle[] Returns an array of GreatArticle objects
 */
     
+    
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('g')
