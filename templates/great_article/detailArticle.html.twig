@@ -21,12 +21,10 @@
 </div>
     <nav>
         <ul>
-            <li>Accueil</li>
+            <li><a href="{{path("Accueil")}}">Accueil</a></li>
         </ul>
     </nav>
-        {% for item in affiche %}
-            <h2>{{item.getTitre}}</h2>
-            <p>{{item.getTexte|slice(0, 100)}} <a href="{{ path("voir",{"id":item.getId})}}">... Lire la suite</a></p>
-            <p>{{item.getThedate|date('d-m-Y')}}</p><hr>
-        {% endfor %}
+            <h2>{{affiche.getTitre}}</h2>
+            <p>{{affiche.getTexte|nl2br}}</p>
+            <p>{{affiche.getThedate|date('d-m-Y')}}</p><hr>
 {% endblock %}

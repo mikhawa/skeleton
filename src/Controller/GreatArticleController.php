@@ -24,8 +24,10 @@ class GreatArticleController extends AbstractController {
      * @Route("/article/{id}", name="voir")
      */
     public function show(GreatArticle $product) {
-        // use the Product!
-        // ...
+        return $this->render('great_article/detailArticle.html.twig', [
+                    'controller_name' => 'GreatArticleController',
+                    'affiche' => $product,
+        ]);
     }
 
 }
