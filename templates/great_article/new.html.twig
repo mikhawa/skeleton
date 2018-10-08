@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New GreatArticle{% endblock %}
+
+{% block body %}
+    <h1>Create new GreatArticle</h1>
+
+    {{ include('great_article/_form.html.twig') }}
+
+    <a href="{{ path('great_article_index') }}">back to list</a>
+{% endblock %}
