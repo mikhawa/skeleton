@@ -1,32 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}GreatArticle index{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>GreatArticle index</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your entity at <code><a href="{{ 'src/Entity/GreatArticle.php'|file_link(0) }}">src/Entity/GreatArticle.php</a></code></li>
-        <li>Your controller at <code><a href="{{ 'src/Controller/GreatArticleController.php'|file_link(0) }}">src/Controller/GreatArticleController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/great_article/index.html.twig'|file_link(0) }}">templates/great_article/index.html.twig</a></code></li>
-        <li>Your repository at <code><a href="{{ 'src/Repository/GreatArticleRepository.php'|file_link(0) }}">src/Repository/GreatArticleRepository.php</a></code></li>
-    </ul>
-</div>
-    <nav>
-        <ul>
-            <li>Accueil</li>
-        </ul>
-    </nav>
-        {% for item in affiche %}
-            <h2>{{item.getTitre}}</h2>
-            <p>{{item.getTexte|slice(0, 100)}} <a href="{{ path("voir",{"id":item.getId})}}">... Lire la suite</a></p>
-            <p>{{item.getThedate|date('d-m-Y')}}</p><hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Texte</th>
+                <th>Thedate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for great_article in great_articles %}
+            <tr>
+                <td>{{ great_article.id }}</td>
+                <td>{{ great_article.titre }}</td>
+                <td>{{ great_article.texte }}</td>
+                <td>{{ great_article.thedate ? great_article.thedate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('great_article_show', {'id': great_article.id}) }}">show</a>
+                    <a href="{{ path('great_article_edit', {'id': great_article.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
         {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('great_article_new') }}">Create new</a>
 {% endblock %}
