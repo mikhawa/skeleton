@@ -10,13 +10,40 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+
 /**
- * @Route("/great/article")
+ * @Route("/")
  */
 class GreatArticleController extends AbstractController
 {
+
+
     /**
-     * @Route("/", name="great_article_index", methods="GET")
+     * @Route("/", name="Accueil")
+     */
+    public function index2() {
+        $repository = $this->getDoctrine()->getRepository(GreatArticle::class);
+        $articles = $repository->findAll();
+        return $this->render('great_article/index2.html.twig', [
+            'controller_name' => 'GreatArticleController',
+            'affiche' => $articles,
+        ]);
+    }
+
+    /**
+     * @Route("/article/{id}", name="voir")
+     */
+    public function show2(GreatArticle $product) {
+        return $this->render('great_article/detailArticle.html.twig', [
+            'controller_name' => 'GreatArticleController',
+            'affiche' => $product,
+        ]);
+    }
+
+
+    /**
+     * @Route("/admin", name="great_article_index", methods="GET")
      */
     public function index(GreatArticleRepository $greatArticleRepository): Response
     {
@@ -24,7 +51,7 @@ class GreatArticleController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="great_article_new", methods="GET|POST")
+     * @Route("/admin/new", name="great_article_new", methods="GET|POST")
      */
     public function new(Request $request): Response
     {
@@ -47,7 +74,7 @@ class GreatArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="great_article_show", methods="GET")
+     * @Route("/admin/{id}", name="great_article_show", methods="GET")
      */
     public function show(GreatArticle $greatArticle): Response
     {
@@ -55,7 +82,7 @@ class GreatArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="great_article_edit", methods="GET|POST")
+     * @Route("/admin/{id}/edit", name="great_article_edit", methods="GET|POST")
      */
     public function edit(Request $request, GreatArticle $greatArticle): Response
     {
@@ -75,7 +102,7 @@ class GreatArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="great_article_delete", methods="DELETE")
+     * @Route("/admin/{id}", name="great_article_delete", methods="DELETE")
      */
     public function delete(Request $request, GreatArticle $greatArticle): Response
     {
